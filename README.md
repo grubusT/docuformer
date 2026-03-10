@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DischargeFormer
+
+## The Problem
+
+Refinancing a home loan should be simple. In practice, banks make it anything but.
+
+When a borrower wants to refinance, their current bank has a financial incentive to slow the process down. One of the most common friction points is the **Discharge Authority form**: a mandatory document that authorises the bank to release the mortgage on your property. Without it, refinancing cannot proceed.
+
+Getting this form from major banks means one of two things:
+
+- **Call the bank.** Sit on hold. Navigate phone menus. Wait for a callback. Repeat.
+- **Pay a mortgage broker.** Hand over money just to get access to a piece of paper.
+
+This is not an accident. Friction is a retention strategy. Every day a borrower spends chasing paperwork is another day they stay on their current (likely worse) rate.
+
+## The Solution
+
+DischargeFormer removes that friction entirely.
+
+We provide official forms as a free, fillable PDF — no phone calls, no brokers, no waiting. Borrowers can download the form instantly, fill it in, and get their refinance moving.
+
+## Who This Is For
+
+- Homeowners refinancing
+- Borrowers paying off their home loan in full
+- Anyone who has been told to "call the bank" just to get a form
+
+## The Broader Picture
+
+The discharge form is one pain point. Across the Australian mortgage industry, borrowers face a system deliberately designed to discourage switching:
+
+- Discharge forms locked behind phone calls or broker relationships
+- Processing delays that can stretch weeks beyond what is legally required
+- Confusing requirements that vary by lender and loan type
+- Limited transparency about what is actually needed and when
+
+DischargeFormer is a starting point. The goal is to surface the information and documents that banks bury, and put them directly in the hands of borrowers.
+
+## Stack
+
+- Next.js 14 (App Router)
+- Tailwind CSS
+- TypeScript
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*DischargeFormer is not affiliated with Westpac Banking Corporation. Always verify current form requirements directly with your lender before lodging.*
