@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Package lock (too noisy, not useful for Claude to read)
+package-lock.json
+
+# Environment variables (never expose to Claude)
+.env
+.env.local
+.env*.local
+
+# OS files
+.DS_Store
+
+# The source PDF is binary - Claude can't read it anyway
+public/forms/*.pdf
