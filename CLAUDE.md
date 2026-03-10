@@ -1,6 +1,6 @@
-# DischargeFormer
+# DocuFormer
 
-A web app that provides the Westpac home loan discharge authority form as a free, fillable PDF download. Built with Next.js 15 and TypeScript.
+A web app that provides official home loan discharge authority forms as free, fillable PDF downloads. Currently serves the Westpac form; designed to scale to other banks and document types. Built with Next.js 15 and TypeScript.
 
 ## Tech Stack
 
@@ -40,9 +40,10 @@ public/
 
 ## Architecture Decisions
 
-- **PDF stamping at runtime:** The original PDF is loaded server-side, user inputs are stamped over the existing form fields using pdf-lib, and the modified PDF is streamed back as a download. We do NOT use interactive PDF form fields - we draw text directly onto the page at fixed coordinates.
-- **API route for PDF generation:** PDF creation happens in `src/app/api/generate-pdf/route.ts`, not in a client component, to keep pdf-lib server-side only.
-- **No client-side PDF manipulation:** pdf-lib runs only in the API route. The form UI is a plain React form that POSTs to the API endpoint.
+- **Serve original PDF, never modify it:** The Westpac discharge authority form is a legally certified document. We serve the original file bytes unchanged. Users fill the interactive fields in their browser's native PDF viewer. Recreating or modifying it is illegal.
+- **PDF has native interactive fields:** The form is PDF 1.6 with AcroForm fields in compressed object streams. The browser decodes and renders them. We do not need pdf-lib at all.
+- **Download gating via API route:** The PDF is served through `src/app/api/download/route.ts` (not as a static asset) so we can add payment/auth checks in that route later without changing anything else.
+- **No pdf-lib needed for current phase:** pdf-lib fails to load this certified PDF anyway. It will only be needed if a future feature requires generating a separate summary document.
 
 ## Code Conventions
 
@@ -55,8 +56,9 @@ public/
 
 ## What NOT To Do
 
-- Do NOT modify `public/forms/discharge-authority.pdf` - it is the source of truth
-- Do NOT install alternative PDF libraries (pdfjs, react-pdf, puppeteer) - we use pdf-lib only
+- Do NOT modify `public/forms/discharge-authority.pdf` - it is a legally certified document, modifying or recreating it is illegal
+- Do NOT serve the PDF as a static public asset - it must go through the API route for future payment gating
+- Do NOT install PDF libraries - the browser handles rendering natively, no library needed
 - Do NOT add a database or auth layer yet - that comes in a later phase
 - Do NOT add payment logic yet - Stripe integration is a future phase
 - Do NOT use `any` type - if unsure, use `unknown` and narrow it
